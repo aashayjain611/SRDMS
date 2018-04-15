@@ -58,7 +58,7 @@ public class StockResource {
 	
 	@GET
 	@Path("/{isin}/latest")
-	public ArrayList<Stock> getLatest(String isin)
+	public ArrayList<Stock> getLatest(@PathParam("isin") String isin)
 	{
 		return stockService.getLatest(isin);
 	}

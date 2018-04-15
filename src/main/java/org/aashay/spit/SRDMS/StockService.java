@@ -131,7 +131,7 @@ public class StockService {
 		try
 		{
 			Statement stmt=mysql.connectToDatabase();
-			ResultSet rs=stmt.executeQuery("");
+			ResultSet rs=stmt.executeQuery("select stock_name,ISIN,price,max(Time) as Time from stocks natural join price group by ISIN having ISIN ='"+isin+"'");
 			if(rs.next())
 				list.add(new Stock(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getTimestamp(4).toString()));
 		}
